@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors</title>
+    <script src = "../rock-paper-scissors/rps-functions.js"></script>
+</head>
+<body>
+    <script>
+        
+        let keepGoing = true;
+        let cpuWinCount = 0;
+        let playerWinCount = 0;
+
+        while(keepGoing){ 
+
+            cpuWinCount = 0;
+            playerWinCount = 0;
+
+            let seriesLength = prompt(`Would you like a best-of-3, best-of-5, 
+                    or best-of-7 game? Press [3/5/7]`);
+
+            switch (seriesLength){
+                case `3`: 
+                    playGameBestOfThree();
+                    break;
+                case `5`:
+                    playGameBestOfFive();
+                    break;
+                case `7`:
+                    playGameBestOfSeven();
+                    break;
+                default:
+                    playGameBestOfFive();
+                    break; 
+            }
+
+            let playAgain = prompt(`Would you like to play again? Press [y/n]`);
+    
+            if (playAgain === `n`){
+                keepGoing = false;
+                alert(`Thanks for playing. See you later!`);
+            } else if (playAgain === `y`){
+                continue; 
+            }
+         }
+    </script>
+    
+</body>
+    
+</html>
+
+<!-- possible tweaks:
+    
+    validate y/n answer for keep-playing prompt, in case user enters something weird  
+    
+    for each round, display not only winner but which choice each player played,
+    e.g. "The computer chose rock, you chose scissors. You lose!" -->
+
