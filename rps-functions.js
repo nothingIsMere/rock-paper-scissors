@@ -1,29 +1,27 @@
 function playGameBestOfThree(){
     
     for (let i = 1; i <= 3; i++){
-       playRound();
+        playRound();
     }
         
-
     if (cpuWinCount === playerWinCount){
         alert(`The game is a draw!`);
     } else if (cpuWinCount > playerWinCount){
         alert(`The computer wins the game!`);
     } else if (playerWinCount > cpuWinCount){
-        alert(`You win the game!`); 
+        alert(`You win the game!`);
     }
+
+    roundsPlayed = 0;
+    drawCount = 0;
 }
-
-//executes a game of Rock, Paper, Scissors if user selects
-//best of 5 game. Will keep executing as long as
-//user chooses to play again when prompted. 
+ 
 function playGameBestOfFive(){
-    
+
     for (let i = 1; i <= 5; i++){
-       playRound();
+        playRound();
     }
         
-
     if (cpuWinCount === playerWinCount){
         alert(`The game is a draw!`);
     } else if (cpuWinCount > playerWinCount){
@@ -31,15 +29,16 @@ function playGameBestOfFive(){
     } else if (playerWinCount > cpuWinCount){
         alert(`You win the game!`); 
     }
+
+    roundsPlayed = 0;
 }
  
 function playGameBestOfSeven(){
     
     for (let i = 1; i <= 7; i++){
-       playRound();
+        playRound();
     }
         
-
     if (cpuWinCount === playerWinCount){
         alert(`The game is a draw!`);
     } else if (cpuWinCount > playerWinCount){
@@ -47,9 +46,13 @@ function playGameBestOfSeven(){
     } else if (playerWinCount > cpuWinCount){
         alert(`You win the game!`); 
     }
+
+    roundsPlayed = 0;
 }
 
-function playRound(){ 
+function playRound(){
+
+    roundsPlayed += 1;
     
     let cpuSelection = getCpuSelection();
     let playerSelection = getPlayerSelection();
@@ -57,16 +60,18 @@ function playRound(){
 
     if (roundWinner === `cpu`){
         cpuWinCount++;
-        alert(`Computer wins this round! Computer has won ${cpuWinCount}
-                rounds!`);
+        alert(`Computer wins. \n Rounds played: ${roundsPlayed} \n Score: Computer: 
+        ${cpuWinCount}, Player:${playerWinCount}, Draws: ${drawCount}`);
     } 
     else if (roundWinner === `player`){
         playerWinCount++;
-        alert(`Player wins this round! Player has won ${playerWinCount} 
-                rounds!`);
+        alert(`Player wins. \n Rounds played: ${roundsPlayed} \n Score: Computer: 
+        ${cpuWinCount}, Player:${playerWinCount}, Draws: ${drawCount}`);
     }
     else if (roundWinner === `draw`){
-        alert(`This round is a draw!`);
+        drawCount += 1;
+        alert(`Draw. \n Rounds played: ${roundsPlayed} \n Score: Computer: 
+        ${cpuWinCount}, Player:${playerWinCount}, Draws: ${drawCount}`);
     }
 }
 
@@ -78,25 +83,22 @@ function getCpuSelection(){
 
 function getPlayerSelection(){
 
-    let keepGoing = true; 
+    let playerSelection;
+    let playerSelectionLower;
 
     let acceptableInputs = [`rock`, `paper`, `scissors`];
     
-    let playerSelection = prompt(`Please enter your choice: `);
-    playerSelectionLower = playerSelection.toLowerCase();
-    
-    while(keepGoing) {
-        if (acceptableInputs.includes(playerSelectionLower)) {
-            keepGoing = false;
-        } else {
-            playerSelection = prompt(`That is not a valid choice. Please choose 
-                    "rock, "paper", or "scissors":`);
-        }
-    }
+    do {
+        
+        playerSelection = prompt(`Choose your weapon (Rock/Paper/Scissors): `);
+        playerSelectionLower = playerSelection.toLowerCase();
+            
+    }while(!acceptableInputs.includes(playerSelectionLower));
 
     return playerSelectionLower; 
-}      
- 
+    
+}
+
 function determineRoundWinner(cpuSelection, playerSelection){
     
     let winner;

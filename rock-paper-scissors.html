@@ -13,6 +13,8 @@
         let keepGoing = true;
         let cpuWinCount = 0;
         let playerWinCount = 0;
+        let drawCount = 0;
+        let roundsPlayed = 0;
 
         while(keepGoing){ 
 
@@ -52,10 +54,6 @@
     
 </html>
 
-<!-- possible tweaks:
-    
-    validate y/n answer for keep-playing prompt, in case user enters something weird  
-    
-    for each round, display not only winner but which choice each player played,
-    e.g. "The computer chose rock, you chose scissors. You lose!" -->
+<!-- PROBLEM: After entering an unacceptable input, prompt won't accept acceptable inputs. E.g. 
+type 'bob', and you get another prompt but now 'rock' etc won't be accepted. -->
 
