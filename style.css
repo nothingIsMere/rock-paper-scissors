@@ -1,0 +1,29 @@
+#rock {
+    background-color: pink;
+}
+
+#paper {
+    background-color: aqua;
+}
+
+#scissors {
+    background-color: honeydew;
+}
+
+.results {
+    border: 3px solid black;
+    background-color: rgb(178, 178, 178);
+    margin-top: 50px;
+    margin-left: 50px;
+    width: 15%;
+    padding-left: 20px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: 50px;
+}
